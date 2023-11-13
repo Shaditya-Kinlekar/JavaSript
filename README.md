@@ -1,3 +1,3 @@
 JavaScript Notes 
 
-Js Projeccts: 
+Js Projects: https://shaditya-kinlekar.github.io/JavaSript/ 
