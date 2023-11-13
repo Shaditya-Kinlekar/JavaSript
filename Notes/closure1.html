@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Closures</title>
+    </head>
+    <style>
+        button {
+            padding: 10px;
+        }
+        span {
+            margin-left: 20px;
+            font-size: 24px;
+        }
+    </style>
+    <body>
+        <button>Click Me</button>
+        <span id="value"></span>
+    </body>
+    <script>
+        // What is a Closure?
+        // A closure is a JavaScript programming concept that allows a function to remember and access variables from its outer (enclosing) scope, even after that outer function has finished executing. In simpler terms, it's like a function "remembers" its surrounding environment, including the variables that were available when the function was created.
+
+        // 1. Understanding Lexical Scoping:
+        //  In JavaScript, variables defined inside a function are scoped to that function. This means that they are only accessible within that function unless passed as parameters or returned as results.
+        // Lexical environment = Local memory + Lexical scope/environment of parent
+
+        // 2. Reference to the Outer Environment:
+        // When a function is defined inside another function, it carries with it a reference to the outer (enclosing) function's scope. This reference is maintained even after the outer function has finished executing. This reference is what allows JavaScript to "remember" the variables from the outer function when the inner function is invoked elsewhere in your code.
+        // When you create a closure by returning an inner function from an outer function, that inner function keeps a reference to the outer function's scope. This reference is often referred to as the "scope chain."
+
+        function outerFunction() {
+            const outerVar = 'I am from the outer function!';
+            function innerFunction() {
+                console.log(outerVar); // The inner function references 'outerVar' from its enclosing scope.
+            }
+            return innerFunction; // The inner function is returned and carries its scope with it.
+        }
+        const closureFunc = outerFunction(); // 'closureFunc' now holds the 'innerFunction' along with its scope.
+        closureFunc(); // When you call 'closureFunc', it still remembers 'outerVar'.
+        /* Note:
+            When we call outerFunction, it returns innerFunction. Even though outerFunction has completed execution and you might expect outerVar to be gone, innerFunction still remembers and has access to outerVar. This is a closure in action.
+        */
+
+        // use cases:
+        // 1. Event handling
+        function buttonClickHandler() {
+            let count = 0;
+            return function () {
+                count++;
+                document.querySelector('#value').textContent = count;
+                console.log(`Button clicked ${count} times.`);
+            };
+        }
+        const onClick = buttonClickHandler();
+        document.querySelector('button').addEventListener('click', onClick);
+
+        // 2. Callbacks:
+        // Closures are often used in callback functions. For example, in asynchronous code like fetching data from an API:
+        function fetchData(url) {
+            fetch(url)
+                .then((response) => response.json())
+                .then((data) => {
+                    // 'data' is accessible here due to the closure
+                    console.log(data);
+                });
+        }
+        // The inner function within .then() has access to the data variable even though it's defined outside of it.
+
+        // 3. Module Patterns:
+        // Closures are used to create modules with private data and methods:
+        const calculator = (function () {
+            let result = 0;
+
+            return {
+                add: function (x) {
+                    result += x;
+                },
+                subtract: function (x) {
+                    result -= x;
+                },
+                getResult: function () {
+                    return result;
+                },
+            };
+        })();
+
+        calculator.add(10);
+        calculator.subtract(2);
+        console.log(calculator.getResult()); // 8
+    </script>
+</html>

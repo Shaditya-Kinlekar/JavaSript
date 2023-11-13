@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dom Fundamentals4</title>
+    </head>
+    <body style="background-color: black; color: #ffffff">
+        <ul class="language">
+            <li>Javascript</li>
+        </ul>
+
+        <ol class="numbers"></ol>
+
+        <ul class="tempList">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ul>
+    </body>
+    <script>
+        // 1
+        function addLanguage(langName) {
+            const li = document.createElement('li');
+            li.innerHTML = langName;
+            document.querySelector('.language').appendChild(li);
+        }
+        addLanguage('Python');
+        const lang = ['Rust', 'C'];
+        // lang.forEach((lang) => addLanguage(lang));
+        lang.forEach(addLanguage);
+
+        // 2
+        // a more optimised approach will be:
+        function optiLanguage(langName) {
+            const li = document.createElement('li');
+            li.appendChild(document.createTextNode(langName));
+            document.querySelector('.numbers').appendChild(li);
+        }
+        [10, 20, 30].forEach(optiLanguage);
+        const nums = [40, 50, 60];
+        nums.forEach(optiLanguage);
+
+        /* difference? 
+            In the first approach, the innerHTML property is used to set the inner HTML of the <li> element to the langName value. This requires parsing the string and creating a new HTML structure each time the function is called. This can be inefficient, especially if the addLanguage function is called multiple times.
+
+            In the second approach, the appendChild method is used to append a new text node containing the langName value to the <li> element. This avoids the need for parsing and creating HTML structures, resulting in better performance.
+            */
+
+        //* Edit element
+        // eg 1
+        const secondLang = document.querySelector('li:nth-child(2)');
+        const newli = document.createElement('li');
+        newli.textContent = 'PHP';
+        secondLang.replaceWith(newli);
+
+        // eg 2
+        const firstLang = document.querySelector('li:first-child');
+        firstLang.outerHTML = '<li>Typescript</li>';
+
+        // Remove element
+        const lastLang = document.querySelector('li:last-child');
+        lastLang.remove();
+
+        // removing multiple elements
+        // 1. using splice()
+        // const tempList = document.querySelectorAll('.tempList li');
+        // Convert the nodeList into an array:
+        // const updatedUl = Array.from(tempList);
+        // updatedUl.splice(-2);
+        // const ulElement = document.querySelector('.tempList');
+        // ulElement.replaceWith(...updatedUl);
+
+        // 2 Using Array filter():
+        const tempList = document.querySelectorAll('.tempList li');
+        const ulElement = document.querySelector('.tempList');
+        // Filter the array to exclude last 2 elements
+        const updatedUl = Array.from(tempList).filter((li, index) => {
+            return index < tempList.length - 2;
+        });
+        ulElement.innerHTML = '';
+        updatedUl.forEach((li) => ulElement.appendChild(li));
+    </script>
+</html>

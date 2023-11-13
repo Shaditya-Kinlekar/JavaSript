@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>multiplication and division of two numbers</title>
+    </head>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to top left, #28b487, #7dd56f);
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 50px;
+        }
+    </style>
+    <body>
+        <div class="container">
+            <label for="input-1">
+                1st Number:
+                <input type="text" id="input-1" />
+            </label>
+            <br />
+            <label for="input-2">
+                2nd Number:
+                <input type="text" id="input-2" />
+            </label>
+        </div>
+
+        <div class="btn-container">
+            <button id="multiply">Multiply</button>
+            <button id="divide">Divide</button>
+        </div>
+
+        <p><span id="result"></span></p>
+    </body>
+    <script>
+        const btn_container = document.querySelector('.btn-container');
+        const result = document.querySelector('#result');
+
+        btn_container.addEventListener('click', (e) => {
+            if (e.target.id === 'multiply') {
+                calculate('multiplication');
+            } else if (e.target.id === 'divide') {
+                calculate('division');
+            }
+        });
+
+        function calculate(operation) {
+            const input1 = Number(document.querySelector('#input-1').value);
+            const input2 = Number(document.querySelector('#input-2').value);
+
+            if (operation === 'multiplication') {
+                result.textContent = input1 * input2;
+            } else if (operation === 'division') {
+                result.textContent = input1 / input2;
+            }
+        }
+    </script>
+</html>

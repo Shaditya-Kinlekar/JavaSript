@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>This keyword</title>
+    </head>
+    <body>
+        <script>
+            'use strict';
+            // this keyword
+            console.log(this); // -> window object
+
+            // fn declaration
+            function name() {
+                console.log(this); // undefined, in strict mode otherwise -> window
+            }
+            name();
+
+            // fn expression
+            const hello = function () {
+                console.log(this); // undefined, in strict mode otherwise -> window
+            };
+            hello();
+
+            // arrow function
+            const arrow = () => {
+                console.log(this);
+            };
+            arrow();
+
+            /* Note: why "this" is undefined in fn declaration and fn expression but window for arrow fn? 
+            -> arrow fn does not get its own this keyword, it uses the lexical this keyword which means it uses the this keyword of its parent fn/parent scope but in that case what is the lexical this? - its the window object(global scope)                
+            */
+
+            /*           
+            const name = () => {        //can be fn decl or exp 
+            const arrow = function() {
+                        console.log(this);
+                    };
+                    arrow();
+                };
+                name(); 
+               // here if the nested fn (arrow) is fn decl or exp then this -> undefined (in strict mode otherwise window)
+            or if the nest fn (arrow) was a arrow fn then it would check its parent scope which is name fn i.e was a fn exp/dec so in that case the this -> undefined    
+                */
+
+            /*
+                const name = () => {
+                const arrow = () => {  // arrow fn =>
+                    console.log(this); // window
+                };
+                arrow();
+            };
+            name();
+            */
+            /* here nested fn is arrow fn so this is lexical scope so it will check parent fn/scope which again is arrow fn (name) so,
+            this now inside the global scope so this => window object
+            */
+
+            const jonas = {
+                year: 1991,
+                calcAge: function () {
+                    console.log(this);
+                    console.log(2037 - this.year);
+                },
+            };
+            jonas.calcAge();
+
+            const matilda = {
+                year: 2017,
+            };
+            matilda.calcAge = jonas.calcAge;
+            matilda.calcAge(); // "this" points to the object calling the method -> "matilda"
+
+            //! here the function is stored in f, then f is read as fn exp i.e const f = function () {...}
+            const f = jonas.calcAge;
+            // console.log(f); // -> function 
+            // f(); // so, this -> undefined
+        </script>
+    </body>
+</html>

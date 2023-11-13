@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Event Bubbling</title>
+        <style>
+            #parent {
+                background: #000;
+                width: 300px;
+                height: 300px;
+                margin-inline: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            #child {
+                padding: 15px;
+                border-radius: 12px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="parent">
+            <button id="child">Click Me</button>
+        </div>
+    </body>
+    <script>
+        child.addEventListener('click', function (e) {
+            // e.stopPropagation();
+            console.log('Child clicked!');
+        });
+
+        parent.addEventListener('click', function () {
+            console.log('Parent clicked!');
+        });
+
+        /* explanation:
+        Event bubbling is a concept in JavaScript and the Document Object Model (DOM) where when an event (like a click) happens on a nested element (like a child inside a parent), the event doesn't just stay with the child;
+        it "bubbles up" through the parent elements as well. So, in your code, if you click on the child element, 
+        it triggers the child's click event, and then it also triggers the parent's click event.
+
+        Here's a step-by-step explanation:
+        1. You have two HTML elements: a parent and a child. You've attached click event listeners to both of them using JavaScript.
+        2. When you click on the child element, the browser registers that click event on the child.
+        3. Now, event bubbling comes into play. The browser doesn't stop there; 
+        it propagates the click event upwards through the DOM tree, from the child to the parent.
+        4. So, first, it triggers the child's click event listener, which logs "Child clicked!" to the console.
+        5. Then, it continues bubbling up to the parent element and triggers the parent's click event listener, 
+        which logs "Parent clicked!" to the console.
+
+        Now, about `e.stopPropagation()`:
+        `e.stopPropagation()` is a way to stop this event bubbling process at a specific point,
+        preventing it from continuing to bubble up through the DOM. When you uncomment the line `e.stopPropagation();` 
+        in your code and click on the child element, this is what happens:
+
+        1. You click on the child element, and the browser registers the click event on the child.
+        2. The child's click event listener runs and logs "Child clicked!" to the console.
+        3. Then, when it reaches the line `e.stopPropagation();`, it stops the event from continuing to bubble up.
+        4. As a result, the parent's click event listener is not triggered, and "Parent clicked!" is not logged to the console.
+        So, `e.stopPropagation()` is like telling the browser, "Hey, don't let this event go any further up the DOM tree."
+        It keeps the event contained within the element where it happened, preventing it from affecting parent elements.
+        */
+    </script>
+</html>

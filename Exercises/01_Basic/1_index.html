@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JavaScript current day and time</title>
+        <style>
+            body {
+                font-size: 2rem;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <p id="today"></p>
+        <p id="current-time"></p>
+    </body>
+    <script>
+        const today = document.querySelector('#today');
+        const currentTime = document.querySelector('#current-time');
+
+        function currentDate() {
+            let date = new Date();
+
+            let options = { hour12: true };
+
+            today.innerHTML = `Today is: ${date.toLocaleString([], { weekday: 'long' })}`;
+            currentTime.innerHTML = `Current Time: ${date.toLocaleTimeString([], options)}`;
+        }
+        currentDate();
+    </script>
+</html>

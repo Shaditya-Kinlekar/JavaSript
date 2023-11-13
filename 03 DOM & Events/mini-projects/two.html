@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+    </body>
+    <script>
+        const today = new Date();
+
+        const day = (str) => {
+            console.log(str, today.toLocaleDateString());
+        };
+
+        let interval;
+
+        const start = function () {
+            interval = setInterval(day, 2000, 'Date: ');
+        };
+
+        const stopFn = function () {
+            clearInterval(interval);
+            interval = null;
+            console.log('Stopped!');
+        };
+
+        document.querySelector('#start').addEventListener('click', start);
+        document.querySelector('#stop').addEventListener('click', stopFn);
+    </script>
+</html>

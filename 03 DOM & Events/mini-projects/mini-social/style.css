@@ -1,0 +1,57 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img,
+svg,
+picture,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0 50px;
+}
+
+.container {
+    display: flex;
+    margin-top: 1.5rem;
+    gap: 50px;
+}
+
+#posts {
+    width: 400px;
+}
+
+i {
+    cursor: pointer;
+}
+
+button {
+    padding: 5px 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+#posts div {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.options {
+    display: flex;
+    gap: 25px;
+}
+
+#error-msg {
+    color: red;
+    font-weight: 700;
+}

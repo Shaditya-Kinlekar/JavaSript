@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Closure</title>
+    </head>
+    <body></body>
+    <script>
+        // print 1 to 5, like 1 after 1sec, 2 after 2sec, etc...
+        // 1. using var
+        function a() {
+            for (var i = 1; i <= 5; i++) {
+                setTimeout(() => {
+                    console.log(i);
+                }, i * 1000);
+            }
+        }
+        a();
+        // there is a problem with this code. It uses the var keyword to declare the loop variable i. The issue with var is that it does not have block scope, meaning that the variable i is shared across all iterations of the loop. As a result, when the callback function inside setTimeout() is executed, it will always reference the final value of i, which is 6.
+        // expected o/p: 6, 6, 6, 6, 6
+        // This is because the callback functions inside setTimeout() are executed after the loop has finished, and they all reference the same variable i, which has a final value of 6.
+
+        // To fix this issue, we can replace the "var" keyword with the "let" keyword, which provides block scope. This will create a new lexical scope for each iteration of the loop, ensuring that each callback function captures the correct value of i, so after every iteration value of i will change.
+        // 2. using let
+        function x() {
+            for (let i = 1; i <= 5; i++) {
+                setTimeout(() => {
+                    console.log(i);
+                }, i * 1000);
+            }
+        }
+        x();
+
+        // 3. using var
+        // If you have to use var only, you can create a closure to capture the value of i for each iteration of the loop.
+        function z() {
+            for (var i = 1; i <= 5; i++) {
+                (function (num) {
+                    setTimeout(() => {
+                        console.log(num);
+                    }, num * 1000);
+                })(i);
+            }
+        }
+        z();
+        //  an immediately invoked function expression (IIFE) is used within the loop to create a new scope and capture the current value of i for each iteration. By passing "i" as an argument to the IIFE and immediately invoking it, the value of i is preserved within its own scope. (will work same for any other function, like instead of IIFE a fn declaration/expression)
+        // expected o/p: 1, 2, 3, 4, 5
+        // Each callback function created by the IIFE has its own scope with a captured value of "i" corresponding to the current iteration of the loop. As a result, each callback function will log the correct value of i after the specified delay.
+    </script>
+</html>

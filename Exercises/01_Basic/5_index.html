@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JavaScript basic animation</title>
+    </head>
+    <body onload="animate_string('target')">
+        <pre id="target">w3resource </pre>
+    </body>
+    <script>
+        function animate_string(id) {
+            const element = document.getElementById(id);
+            // Get the first child node of the element (assuming no other children)
+            const textNode = element.childNodes[0];
+            // Get the initial text from the text node
+            let text = textNode.data;
+
+            // Set up a timer to update the text every 100 milliseconds
+            setInterval(() => {
+                // Move the last character to the front of the text
+                text = text[text.length - 1] + text.substring(0, text.length - 1);
+                // Update the text node with the new text
+                textNode.data = text;
+            }, 100);
+        }
+    </script>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- 14.  -->
+        <input type="file" id="file" />
+        <br />
+        <br />
+        <button id="btn">Check extension</button>
+    </body>
+    <script>
+        // 11.  Write a JavaScript program to convert temperatures to and from Celsius, Fahrenheit.
+        // [ Formula : c/5 = (f-32)/9 [ where c = temperature in Celsius and f = temperature in Fahrenheit ]
+
+        let celsius;
+        let fahrenheit = 45;
+
+        celsius = ((fahrenheit - 32) / 9) * 5;
+        console.log('\n🚀 ~ celsius:', celsius);
+
+        fahrenheit = (celsius / 5) * 9 + 32;
+        console.log('\n🚀 ~ fahrenheit:', fahrenheit);
+
+        // 12. Write a JavaScript program to get the website URL (loading page).
+        const currentUrl = window.location.href;
+        console.log(currentUrl);
+
+        // solution 2
+        // console.log(document.URL);
+
+        // 13. Write a JavaScript exercise to create a variable using a user-defined name.
+        const var_name = 'abcd';
+        const n = 120;
+        this[var_name] = n;
+        console.log(this[var_name]);
+
+        // 14. Write a JavaScript exercise to get the filename extension.
+        let filename = 'index.js';
+        console.log(filename.split('.').pop());
+
+        // solution 2
+        const btn = document.getElementById('btn');
+        const checkExtension = () => {
+            file = document.querySelector('#file').value;
+            const extension = file.split('.').pop();
+            document.write(`the file extension is:  ${extension}`);
+        };
+        btn.addEventListener('click', checkExtension);
+
+        // 15. Write a JavaScript program to get the difference between a given number and 13, if the number is broader than 13 return double the absolute difference.
+        function calculate(num) {
+            console.log('\n🚀 ~ calculate ~ num:', num);
+            if (num <= 13) {
+                console.log('difference between num and 13: ', 13 - num);
+            } else {
+                console.log('double the absolute difference: ', Math.abs(num - 13) * 2);
+            }
+        }
+        calculate(Math.floor(Math.random() * 50) + 1);
+    </script>
+</html>

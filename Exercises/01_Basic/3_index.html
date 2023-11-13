@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Write a JavaScript program to get the current date</title>
+    </head>
+    <body>
+        <p id="one"></p>
+        <p id="two"></p>
+        <p id="three"></p>
+    </body>
+    <script>
+        const one = document.getElementById('one');
+        const two = document.getElementById('two');
+        const three = document.getElementById('three');
+        const date = new Date();
+        let dd = date.getDate();
+        let mm = date.getMonth() + 1;
+        const yyyy = date.getFullYear();
+
+        // format the day and month to ensure they have leading zeros when needed.
+        if (dd < 10) {
+            dd = `0${dd}`;
+        }
+        if (mm < 10) {
+            mm = `0${mm}`;
+        }
+
+        // dd-mm-yyyy format
+        one.innerHTML = `${dd}-${mm}-${yyyy}`;
+
+        // dd/mm/yyyy format
+        two.innerHTML = `${dd}/${mm}/${yyyy}`;
+
+        // mm-dd-yyyy format
+        three.innerHTML = `${mm}-${dd}-${yyyy}`;
+    </script>
+</html>

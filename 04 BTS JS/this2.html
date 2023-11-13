@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>This keyword part 2</title>
+    </head>
+    <body>
+        <script>
+            'use strict';
+
+            // better to avoid using "this" with arrow fn(as a method) and if using "var" -> since it creates variables in the global(window), now here the firstName is stored in the global scope n hence in the window object. so, the this keyword in jonas.greet() will point to the firstName declared with var i.e  Shadz which would otherwise be "undefined"
+            // var firstName = 'Shadz';
+
+            const jonas = {
+                year: 1991,
+                firstName: 'Jonas',
+                calcAge: function () {
+                    console.log(this);
+                    console.log(2037 - this.year);
+                },
+                greet: () => {
+                    console.log(this); // window
+                    console.log(`Hey ${this.firstName}!`);
+                },
+                hello: function () {
+                    console.log(this); // Jonas {}
+                    console.log(`Hello ${this.firstName} 👋`);
+                },
+            };
+            jonas.greet(); // this.firstName -> undefined, cuz "this"  points to the global scope (window{})
+
+            //!! Note: never use a arrow fn as a "method"(fns in object)
+            //  use normal function expressions as methods
+            jonas.hello(); // using fn expression so "this" -> jonas object
+
+            //!! Problem:
+            // const regularFunction = {
+            //     year: 2000,
+            //     calcAge: function () {
+            //         console.log(this); // regularFunction{..}
+
+            //         const age = function () {
+            //             //here age is just a regular function inside a method so as per the rule "this" -> undefined
+            //             console.log(this);
+            //             console.log(2037 - this.year);
+            //         };
+            //         age();
+            //     },
+            // };
+            // regularFunction.calcAge();
+
+            // SOLUTION 1
+            //** the above behaviour can be fixed by creating a "self" variable and initialising it with "this" which refers to the to object(regularFunction) inside the method(calcAge) and then using the self variable to refer to the object properties inside the function which is nested in the method like this:
+            const regularFunction = {
+                year: 2000,
+                calcAge: function () {
+                    console.log(this); // regularFunction{..}
+                    const self = this; // solution using self = this, if using fn decl or exp inside a method
+                    const age = function () {
+                        console.log(self);
+                        console.log(2037 - self.year);
+                    };
+                    age();
+                },
+            };
+            regularFunction.calcAge();
+            // the above is a pre es6 solution and the below is more modern solution i.e using arrow fn
+            // SOLUTION 2
+            const arrFn = {
+                num: 4000,
+                sum: function () {
+                    console.log(this);
+                    // solution: if arrow fn is used as a fn inside a method(sum) then "this" -> arrFn(object), so no need of self = this in the case of fn decl/exp
+                    const add = () => {
+                        // here "this" inherits from parent scope
+                        console.log(this);
+                        console.log(this.num + this.num);
+                    };
+                    add();
+                },
+            };
+            arrFn.sum();
+
+            //!! NOTE: important to note but not used currently
+            //** arguments keyword -> usable with fn decl/exp
+            const addExp = function (a, b) {
+                console.log(arguments);
+                return a + b;
+            };
+            addExp(2, 5);
+            addExp(2, 5, 6, 7, 8);
+            // better approach is to use destructuring syntax
+
+            // the above arguments keyword cant be used in arrow fns
+            var addArrow = (a, b) => {
+                console.log(arguments); // arguments not defined error
+                return a + b;
+            };
+            addArrow(2, 3, 4);
+        </script>
+    </body>
+</html>

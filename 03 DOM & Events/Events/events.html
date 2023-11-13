@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>HTML Events</title>
+    </head>
+    <body style="background-color: #414141; color: aliceblue">
+        <h2>Amazing image</h2>
+        <div>
+            <ul id="images">
+                <li>
+                    <img
+                        width="200px"
+                        id="photoshop"
+                        src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                        alt="photoshop" />
+                </li>
+                <li>
+                    <img
+                        width="200px"
+                        id="japan"
+                        src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                        alt="" />
+                </li>
+                <li>
+                    <img
+                        width="200px"
+                        id="river"
+                        src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                        alt="" />
+                </li>
+                <li>
+                    <img
+                        width="200px"
+                        id="owl"
+                        src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                        alt="" />
+                </li>
+                <li>
+                    <img
+                        width="200px"
+                        id="prayer"
+                        src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                        alt="" />
+                </li>
+                <li>
+                    <a style="color: aliceblue" href="https://google.com" id="google">Google</a>
+                </li>
+            </ul>
+        </div>
+    </body>
+    <script>
+        // doesn't give as much features as addEventListener so not recommended in js
+        // document.getElementById('owl').onclick = function () {
+        //     alert('You clicked the owl!');
+        // };
+
+        /* 
+        used in earlier days like for internet explorer
+        attachEvent()
+        jquery - on()  , used in jquery 
+        */
+
+        //  third parameter in addEventListener i.e true/false (by default it is false and so its ok to not write it)
+        document.getElementById('images').addEventListener(
+            'click',
+            function (e) {
+                console.log('clicked inside the ul');
+            },
+            false
+        );
+
+        document.getElementById('owl').addEventListener(
+            'click',
+            function (e) {
+                e.stopPropagation();
+                console.log('owl clicked!');
+            },
+            false
+        );
+
+        /* explanation:  
+            Event bubbling is a JavaScript event model where the event first triggers on the innermost target element, and then successively triggers on the outer (parent) elements.
+
+        In the example code, we have two event listeners - one on the #images element and one on the #owl element.
+        #owl is a child of #images. When you click on #owl, the click event will first trigger the listener on #owl, logging "owl clicked!" to the console. 
+        Then, the event will propagate up to the parent #images element, triggering its click listener and alerting "clicked inside the ul". This is called "event propagation" or "event bubbling" - the event bubbles up from the inner element to the outer elements.
+
+            "Event propagation" refers to the process by which JavaScript assigns an event to an element. It has 3 phases:
+            1. Capturing phase - The event goes down to the innermost element.
+            2. Target phase - The event reaches the target element.
+            3. Bubbling phase - The event bubbles up from the inner elements.
+
+            By default, browsers execute the bubbling phase, i.e. they handle the event on the innermost element first, then bubble up.
+            We can change this behavior by setting the 'third argument useCapture' to "true" in addEventListener(). This will execute the 'capturing phase' instead, registering the outer element's listener first.
+        */
+
+        document.getElementById('google').addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('google clicked!');
+        });
+
+        /* 
+        "e.preventDefault()" prevents the default action of an element from happening.
+        In this case, the element is an <a> tag with id="google". By default, when an <a> tag is clicked, it will navigate the browser to the href specified in the <a> tag.
+        By calling e.preventDefault(), we are preventing that default navigation action from happening.
+
+        So in this example, when the #google link is clicked:
+        - 'Without' e.preventDefault(): 
+        - The default action would be for the browser to navigate to the href of that <a> tag 
+        - In addition, 'google clicked!' would be logged to the console
+
+        - 'With' e.preventDefault():
+        - The default navigation is prevented  
+        - Only 'google clicked!' is logged to the console
+        - The browser does not navigate to the href
+
+        In summary, e.preventDefault() is used to prevent the default action of an element, which allows us to execute custom JavaScript in response to an event, without the default behavior occurring.
+        This gives us more control over how elements behave when interacted with.
+        */
+
+        // research: type, timestamp, preventDefault , target, toElement, srcElement, currentTarget, clientX, clientY, screenX, screenY
+        // altKey, ctrlKey, shiftKey, keyCode
+    </script>
+</html>

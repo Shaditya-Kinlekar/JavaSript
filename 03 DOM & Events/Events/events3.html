@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Events HTML</title>
+        <style>
+            ul {
+                width: 500px;
+                height: 100vh;
+                margin: 0 auto;
+                font-size: 1.5rem;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                list-style-type: none;
+            }
+            li {
+                padding: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border: 2px solid black;
+            }
+            span {
+                font-family: monospace;
+                color: red;
+                border: 1px solid black;
+                padding: 5px 7px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <ul id="container">
+            <li id="list-item">
+                Java
+                <span>X</span>
+            </li>
+            <li>
+                Python
+                <span>X</span>
+            </li>
+            <li>
+                Go
+                <span>X</span>
+            </li>
+            <li>
+                Rust
+                <span>X</span>
+            </li>
+        </ul>
+    </body>
+    <script>
+        const container = document.querySelector('#container');
+
+        container.addEventListener('click', (e) => {
+            const removeLi = e.target.tagName;
+            if ((e.target = 'SPAN')) {
+                e.target.parentNode.remove();
+            }
+        });
+    </script>
+</html>

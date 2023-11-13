@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CallBack Functions</title>
+    </head>
+    <body>
+        <button id="click">click me</button>
+        <script>
+            const button = document.querySelector('#click');
+
+            //  to increase the counter using global variable
+            // let count = 0;
+            // button.addEventListener('click', function () {
+            //     console.log('🚀 ~ count:', count++);
+            // });
+            // not a good approach since anybody can change the value of count
+
+            // better approach using closures(data hiding)
+            function counter() {
+                let count = 0;
+                button.addEventListener('click', function () {
+                    console.log('🚀 ~ count:', count++);
+                });
+            }
+            counter();
+        </script>
+    </body>
+</html>

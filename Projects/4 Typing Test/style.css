@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Lexend+Deca:wght@100;200;300;400;500;600;700&family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #8bcdff74;
+}
+
+.typing-section {
+    text-align: center;
+}
+
+#textarea {
+    border: 0.1rem solid #155578;
+    border-radius: 1rem;
+    max-width: 50rem;
+    width: 50rem;
+    height: 20rem;
+    padding: 1rem 2rem;
+    font-size: 1.6rem;
+    outline: none;
+}
+
+#btn {
+    display: inline-block;
+    padding: 1rem 2.4rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: #155469;
+    color: #fff;
+    font-size: 1.8rem;
+    margin-top: 1.6rem;
+}
+
+h2 {
+    font-size: 2.4rem;
+    text-transform: capitalize;
+    color: #155469;
+    text-align: center;
+}
+
+#showSentence,
+#score {
+    font-size: 1.6rem;
+    margin: 2rem 0;
+    letter-spacing: 0.02rem;
+    text-align: center;
+    max-width: 500px;
+    word-wrap: break-word;
+}
+
+.timer-div {
+    width: 100%;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.show-time {
+    font-size: 2.4rem;
+    padding: 1.5rem;
+    text-align: right;
+    width: 6rem;
+    height: 6rem;
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: .5rem solid #5c8bbb;
+}
+
+@media (max-width: 500px) {
+    #textarea {
+        border: 0.1rem solid #155578;
+        border-radius: 1rem;
+        max-width: 45rem;
+        width: 45rem;
+        height: 20rem;
+        padding: 1rem 2rem;
+        font-size: 1.4rem;
+        outline: none;
+    }
+
+    #showSentence,
+    #score {
+        font-size: 1.5rem;
+        margin: 2rem 0;
+        letter-spacing: 0.02rem;
+        text-align: center;
+        max-width: 450px;
+        word-wrap: break-word;
+    }
+
+    #btn {
+        display: block;
+        font-size: 1.4rem;
+        margin: 2rem auto;
+    }
+}
