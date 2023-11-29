@@ -13,22 +13,22 @@
 */
 
 const promiseOne = new Promise((resolve, reject) => {
-    // Do any async task
-    setTimeout(() => {
-        console.log('Async task is completed');
-        resolve();
-    }, 1000);
+  // Do any async task
+  setTimeout(() => {
+    console.log('Async task is completed');
+    resolve();
+  }, 1000);
 });
 
 promiseOne.then(() => {
-    console.log('Promise is resolved');
+  console.log('Promise is resolved');
 });
 
 new Promise((resolve, reject) => {
-    setTimeout(() => {
-        console.log('Async task 2');
-        resolve();
-    }, 1000);
+  setTimeout(() => {
+    console.log('Async task 2');
+    resolve();
+  }, 1000);
 }).then(() => {
-    console.log('Async 2 resolved');
+  console.log('Async 2 resolved');
 });

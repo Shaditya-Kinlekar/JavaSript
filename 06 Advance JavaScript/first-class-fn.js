@@ -3,21 +3,21 @@ function person(name, age) {
     // (name, age) are parameters
     console.log(name, age);
 }
-person('John', 25); // ('John', 25) - are arguments
+person("John", 25); // ('John', 25) - are arguments
 
 // 1. Function Statements / Function Declaration
 function funDec() {
-    console.log('This is a fn declaration');
+    console.log("This is a fn declaration");
 }
 
 // 2. Function Expressions
 const funExp = function () {
-    console.log('this is a fn expression');
+    console.log("this is a fn expression");
 };
 
 // 3. Arrow Functions
 const funExp2 = () => {
-    console.log('this is a fn expression using arrow fn');
+    console.log("this is a fn expression using arrow fn");
 };
 
 // 4. Anonymous Function
@@ -28,7 +28,7 @@ const funExp2 = () => {
 
 // 5. IIFE - Immediately Invoked Function Expression
 (function () {
-    console.log('this is an IIFE');
+    console.log("this is an IIFE");
 })();
 
 // 6. Named Function Expressions

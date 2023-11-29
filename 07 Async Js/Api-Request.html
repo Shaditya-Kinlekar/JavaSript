@@ -1,86 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Api Request</title>
-    </head>
-    <style>
-        body {
-            background-color: #212121;
-            color: white;
-            height: 80vh;
-            font-family: sans-serif;
-        }
-        table {
-            border: 1px solid white;
-            padding: 10px;
-        }
-        th {
-            border: 1px solid white;
-            padding: 10px;
-        }
-        td {
-            border: 1px solid white;
-            padding: 10px;
-        }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Api Request</title>
+  </head>
+  <style>
+    body {
+      background-color: #212121;
+      color: white;
+      height: 80vh;
+      font-family: sans-serif;
+    }
+    table {
+      border: 1px solid white;
+      padding: 10px;
+    }
+    th {
+      border: 1px solid white;
+      padding: 10px;
+    }
+    td {
+      border: 1px solid white;
+      padding: 10px;
+    }
+  </style>
+  <body>
+    <h1>XMLHttpRequest: readyState property</h1>
 
-     
-    </style>
-    <body>
-        <h1>XMLHttpRequest: readyState property</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Value</th>
+          <th>State</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>0</code></td>
+          <td><code>UNSENT</code></td>
+          <td>
+            Client has been created.
+            <code>open()</code>
+            not called yet.
+          </td>
+        </tr>
+        <tr>
+          <td><code>1</code></td>
+          <td><code>OPENED</code></td>
+          <td>
+            <code>open()</code>
+            has been called.
+          </td>
+        </tr>
+        <tr>
+          <td><code>2</code></td>
+          <td><code>HEADERS_RECEIVED</code></td>
+          <td>
+            <code>send()</code>
+            has been called, and headers and status are available.
+          </td>
+        </tr>
+        <tr>
+          <td><code>3</code></td>
+          <td><code>LOADING</code></td>
+          <td>
+            Downloading;
+            <code>responseText</code>
+            holds partial data.
+          </td>
+        </tr>
+        <tr>
+          <td><code>4</code></td>
+          <td><code>DONE</code></td>
+          <td>The operation is complete.</td>
+        </tr>
+      </tbody>
+    </table>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Value</th>
-                    <th>State</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><code>0</code></td>
-                    <td><code>UNSENT</code></td>
-                    <td>
-                        Client has been created.
-                        <code>open()</code>
-                        not called yet.
-                    </td>
-                </tr>
-                <tr>
-                    <td><code>1</code></td>
-                    <td><code>OPENED</code></td>
-                    <td>
-                        <code>open()</code>
-                        has been called.
-                    </td>
-                </tr>
-                <tr>
-                    <td><code>2</code></td>
-                    <td><code>HEADERS_RECEIVED</code></td>
-                    <td>
-                        <code>send()</code>
-                        has been called, and headers and status are available.
-                    </td>
-                </tr>
-                <tr>
-                    <td><code>3</code></td>
-                    <td><code>LOADING</code></td>
-                    <td>
-                        Downloading;
-                        <code>responseText</code>
-                        holds partial data.
-                    </td>
-                </tr>
-                <tr>
-                    <td><code>4</code></td>
-                    <td><code>DONE</code></td>
-                    <td>The operation is complete.</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <script src="xmlRequest.js"></script>
-    </body>
+    <script src="xmlRequest.js"></script>
+  </body>
 </html>

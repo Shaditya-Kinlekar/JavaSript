@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+const weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
 const hours = {
     [weekdays[3]]: {
@@ -18,18 +18,18 @@ const hours = {
 };
 
 const person = {
-    fname: 'John',
+    fname: "John",
 };
 
 const hello = function () {
-    console.log('hello world');
+    console.log("hello world");
 };
 
 const restaurant = {
-    name: 'Classico Italiano',
-    categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-    starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-    mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+    name: "Classico Italiano",
+    categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
+    starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
+    mainMenu: ["Pizza", "Pasta", "Risotto"],
     orderPizza: function (mainIngredient, ...otherIngredients) {
         console.log(mainIngredient);
         console.log(otherIngredients);
@@ -41,14 +41,14 @@ const restaurant = {
     //es6 enhanced syntax for methods
     hello,
     favFood() {
-        console.log('Pizza');
+        console.log("Pizza");
     },
 };
 
-restaurant.person.dob = '2-2-2';
-console.log('restaurant: ', restaurant);
-console.log('person: ', person);
-console.log('-------------------------------------');
+restaurant.person.dob = "2-2-2";
+console.log("restaurant: ", restaurant);
+console.log("person: ", person);
+console.log("-------------------------------------");
 
 restaurant.hello();
 restaurant.favFood();

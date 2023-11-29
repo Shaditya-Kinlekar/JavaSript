@@ -13,29 +13,29 @@ console.log(newArray);
 console.log(...newArray);
 
 const restaurant = {
-    name: 'Classico Italiano',
-    location: 'Via Angelo Tavanti 23, Firenze, Italy',
-    categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-    starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-    mainMenu: ['Pizza', 'Pasta', 'Risotto', ['Focaccia', 'Bruschetta']],
-    openingHours: {
-        thu: {
-            open: 12,
-            close: 22,
-        },
-        fri: {
-            open: 11,
-            close: 23,
-        },
-        sat: {
-            open: 0, //open 24 hours
-            close: 24,
-        },
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto', ['Focaccia', 'Bruschetta']],
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
     },
-    orderPasta: function (ing1, ing2, ing3) {
-        // function which accepts multiple arguments
-        console.log(`Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`);
+    fri: {
+      open: 11,
+      close: 23,
     },
+    sat: {
+      open: 0, //open 24 hours
+      close: 24,
+    },
+  },
+  orderPasta: function (ing1, ing2, ing3) {
+    // function which accepts multiple arguments
+    console.log(`Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`);
+  },
 };
 
 // creating new array by expanding "restaurant.mainMenu[]" and then by adding new elements to it(i.e 'Gnocci')... here we dont manupulate the original array(restaurant.mainMenu) but create a new array(newMenu) and its "[] object" has its own new memory address
@@ -73,9 +73,9 @@ console.log(...str);
 
 //* Real-world example
 const ingredients = [
-    // prompt("Let's make pasta! Ingrdient 1?"),
-    // prompt('Ingrdient 2?'),
-    // prompt('Ingrdient 3?'),
+  // prompt("Let's make pasta! Ingrdient 1?"),
+  // prompt('Ingrdient 2?'),
+  // prompt('Ingrdient 3?'),
 ];
 console.log(ingredients);
 

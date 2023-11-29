@@ -1,34 +1,34 @@
 'use strict';
 
 const restaurant = {
-    name: 'Classico Italiano',
-    location: 'Via Angelo Tavanti 23, Firenze, Italy',
-    categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-    starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-    mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-    openingHours: {
-        thu: {
-            open: 12,
-            close: 22,
-        },
-        fri: {
-            open: 11,
-            close: 23,
-        },
-        sat: {
-            open: 0, //open 24 hours
-            close: 24,
-        },
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
     },
-    order: function (starterIndex, mainIndex) {
-        return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+    fri: {
+      open: 11,
+      close: 23,
     },
-    // destructuring the obj which is passed as argument into variables(with defaults) 👇️
-    orderDelivery: function ({ starterIndex = 1, mainIndex = 0, time = '8 pm', address }) {
-        console.log(
-            `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
-        );
+    sat: {
+      open: 0, //open 24 hours
+      close: 24,
     },
+  },
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+  // destructuring the obj which is passed as argument into variables(with defaults) 👇️
+  orderDelivery: function ({ starterIndex = 1, mainIndex = 0, time = '8 pm', address }) {
+    console.log(
+      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
 };
 
 //* Object Destructuring
@@ -61,19 +61,19 @@ console.log(a, b);
 
 //* Nested Objects
 const {
-    // fri: { open, close },
-    fri: { open: opening, close: closing }, // changing variable names
+  // fri: { open, close },
+  fri: { open: opening, close: closing }, // changing variable names
 } = openingHours;
 console.log(opening, closing);
 
 //* passing obj as argument
 restaurant.orderDelivery({
-    time: '11:23 PM',
-    address: 'Mumbai,India',
-    mainIndex: 2,
-    starterIndex: 2,
+  time: '11:23 PM',
+  address: 'Mumbai,India',
+  mainIndex: 2,
+  starterIndex: 2,
 });
 
 restaurant.orderDelivery({
-    address: 'Panaji,Goa',
+  address: 'Panaji,Goa',
 });

@@ -1,5 +1,5 @@
 function logger() {
-    console.log(`My name is Shadz`);
+  console.log(`My name is Shadz`);
 }
 
 //* calling / invoking / running the function
@@ -7,9 +7,9 @@ logger();
 logger();
 
 function fruitProcessor(apples, oranges) {
-    console.log(apples, oranges);
-    const juice = `Juice with ${apples} apples & ${oranges} oranges`;
-    return juice;
+  console.log(apples, oranges);
+  const juice = `Juice with ${apples} apples & ${oranges} oranges`;
+  return juice;
 }
 
 fruitProcessor(3, 5);
