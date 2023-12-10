@@ -1,32 +1,32 @@
 'use strict';
 
 const restaurant = {
-    name: 'Classico Italiano',
-    location: 'Via Angelo Tavanti 23, Firenze, Italy',
-    categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-    starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-    mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-    openingHours: {
-        thu: {
-            open: 12,
-            close: 22,
-        },
-        fri: {
-            open: 11,
-            close: 23,
-        },
-        sat: {
-            open: 0,
-            close: 24,
-        },
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
     },
-    order(starterIndex, mainIndex) {
-        return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+    fri: {
+      open: 11,
+      close: 23,
     },
+    sat: {
+      open: 0,
+      close: 24,
+    },
+  },
+  order(starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
 };
 
 if (restaurant.openingHours && restaurant.openingHours.mon)
-    console.log(restaurant.openingHours.mon.open);
+  console.log(restaurant.openingHours.mon.open);
 
 // console.log(restaurant.openingHours.mon.open);
 
@@ -39,14 +39,14 @@ console.log(restaurant.openingHours?.fri?.open);
 const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
 for (const day of days) {
-    // console.log(day);
-    const open = restaurant.openingHours[day]?.open ?? 'closed'; // read as restaurant.openingHours.mon
-    // if (open !== undefined) {
-    //     console.log(`On ${day}, we open at ${open}`);
-    // }
-    if (open) {
-        console.log(`On ${day}, we open at ${open}`);
-    }
+  // console.log(day);
+  const open = restaurant.openingHours[day]?.open ?? 'closed'; // read as restaurant.openingHours.mon
+  // if (open !== undefined) {
+  //     console.log(`On ${day}, we open at ${open}`);
+  // }
+  if (open) {
+    console.log(`On ${day}, we open at ${open}`);
+  }
 }
 
 // Methods (to check if Method exists)

@@ -16,27 +16,26 @@ const coding = ['HTML', 'CSS', 'JS', 'Python', 'PHP'];
 // coding.forEach(printValue);
 
 coding.forEach((value, index, arr) => {
-    console.log(value, index, arr);
+  console.log(value, index, arr);
 });
 
 const myCountry = [
-    {
-        country: 'India',
-        language: 'Hindi',
-    },
-    {
-        country: 'China',
-        language: 'Mandarin',
-    },
-    {
-        country: 'Japan',
-        language: 'Japanese',
-    },
+  {
+    country: 'India',
+    language: 'Hindi',
+  },
+  {
+    country: 'China',
+    language: 'Mandarin',
+  },
+  {
+    country: 'Japan',
+    language: 'Japanese',
+  },
 ];
 
 myCountry.forEach((value) => {
-    console.log(`country: ${value.country}, language-spoken: ${value.language}`);
+  console.log(`country: ${value.country}, language-spoken: ${value.language}`);
 });
 
 //* forEach() returns undefined. It just iterates over the array and executes the provided function for each element.
-

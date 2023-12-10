@@ -8,7 +8,7 @@ const fruits = ['apple', 'banana', 'orange'];
 const entries = fruits.entries(); // Get the iterator object
 
 for (const [index, value] of entries) {
-    console.log(`Index: ${index}, Value: ${value}`);
+  console.log(`Index: ${index}, Value: ${value}`);
 }
 // Output:
 // Index: 0, Value: apple
@@ -16,10 +16,10 @@ for (const [index, value] of entries) {
 // Index: 2, Value: orange
 
 const restaurant = {
-    name: 'Classico Italiano',
-    categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-    starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-    mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  name: 'Classico Italiano',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 };
 
 const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
@@ -33,6 +33,6 @@ for (const item of menu) console.log(item);
 // console.log('menu.entries(): ', [...menu.entries()]);
 
 for (const [index, item] of menu.entries()) {
-    console.log(`${index + 1} : ${item}`);
+  console.log(`${index + 1} : ${item}`);
 }
 console.log('--------------------');

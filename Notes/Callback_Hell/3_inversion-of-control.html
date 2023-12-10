@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IOC</title>
+  </head>
+  <body>
+    <script>
+      //*  ****** Inversion of control ******
+      /* Inversion of Control (IoC) is a principle in software engineering where the flow of the application is dictated not by the principal component (in this case, the fetchUser function), but by the components it calls (in this case, the processUser function). In the provided code: */
+      // Function to fetch a random user
+      function fetchUser(callback) {
+        // Fetch a random user from the API
+        fetch('https://randomuser.me/api/')
+          .then((response) => response.json())
+          .then((data) => {
+            // Pass the user data to the callback function
+            callback(data.results[0]);
+          });
+      }
+
+      // Function to process user data
+      function processUser(user) {
+        // Log the user's name
+        console.log(`Processed user: ${user.name.first} ${user.name.last}`);
+      }
+
+      // Fetch a user and process the user data
+      fetchUser(processUser);
+
+      /* 
+      The fetchUser function is responsible for fetching a user from the API. However, once the user data is fetched, the fetchUser function doesn't decide what to do with it. Instead, it passes the control to the callback function (which is processUser in this case) by calling callback(data.results[0]).
+
+      This is where the inversion of control happens. The fetchUser function doesn't control what happens to the user data after it's fetched. Instead, it inverts the control to the processUser function, which decides what to do with the user data (in this case, it logs the user's name).
+
+      This makes the code more modular and flexible. For example, if you want to do something different with the user data (like saving it to a database), you can simply pass a different callback function to fetchUser without having to modify the fetchUser function itself. This is the power of inversion of control.
+      */
+    </script>
+  </body>
+</html>

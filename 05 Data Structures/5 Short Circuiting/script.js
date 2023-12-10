@@ -13,14 +13,14 @@ console.log(undefined || null); // both falsy so returns the last falsy value
 console.log(undefined || 0 || '' || 'React' || 23 || null);
 
 const restaurant = {
-    name: 'Classico Italiano',
-    categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-    starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-    mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-    orderPizza: function (mainIngredient, ...otherIngredients) {
-        console.log(mainIngredient);
-        console.log(otherIngredients);
-    },
+  name: 'Classico Italiano',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
 };
 
 // if numGuests exists store its value otherwise store a default value of 10
@@ -41,7 +41,7 @@ console.log(undefined && null);
 
 //Practical example
 if (restaurant.orderPizza) {
-    restaurant.orderPizza('mushrooms', 'spinach');
+  restaurant.orderPizza('mushrooms', 'spinach');
 }
 // to check if a certain value exists, which can be done in a simpler way 👇️
 restaurant.orderPizza && restaurant.orderPizza('tomato', 'cheese'); // both truthy so returns the last truthy value

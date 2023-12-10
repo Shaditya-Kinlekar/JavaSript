@@ -3,12 +3,12 @@
 console.log('Cars');
 
 setTimeout(() => {
-    cars();
+  cars();
 }, 0);
 
 function cars() {
-    const cars = ['BMW', 'Mercedes', 'Audi'];
-    console.log(cars);
+  const cars = ['BMW', 'Mercedes', 'Audi'];
+  console.log(cars);
 }
 
 console.log('fetching cars...');

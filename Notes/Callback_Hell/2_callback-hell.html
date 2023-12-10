@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CallBack Hell</title>
+  </head>
+  <body></body>
+  <script>
+    /* 
+    There are 2 Parts of Callback:
+    1. Good Part of callback - Callback are super important while writing asynchronous code in JS
+    2. Bad Part of Callback - Using callback we can face issues like:
+    - Callback Hell
+    - Inversion of control
+    */
+
+    // 1. Example to showcase the good part of using callbacks
+
+    // Function to simulate an asynchronous API call to get user details
+    function getUserDetails(userId, callback) {
+      console.log('Fetching user details...');
+      setTimeout(() => {
+        // assuming the obj to be API
+        const userDetails = {
+          id: userId,
+          name: 'John Doe',
+          email: 'johndoe@example.com',
+        };
+        console.log('User details fetched');
+        callback(userDetails); // The callback is used here
+      }, 1500);
+    }
+
+    // Callback function to be passed to getUserDetails
+    function onUserDetailsFetched(user) {
+      console.log(`User Name: ${user.name}`);
+      console.log(`User Email: ${user.email}`);
+    }
+
+    // Using the getUserDetails function with the callback
+    getUserDetails(1, onUserDetailsFetched);
+
+    //  ****** Callback Hell ******
+    let todoList = [];
+
+    // Asynchronous function to add a todo item after a delay
+    function addTodo(item, callback) {
+      setTimeout(() => {
+        todoList.push(item); // Adds the item to the list
+        callback(); // Calls the callback function
+      }, 1000);
+    }
+
+    // Asynchronous function to remove a todo item after a delay
+    function removeTodo(item, callback) {
+      setTimeout(() => {
+        let index = todoList.indexOf(item); // Finds the item's index
+        if (index !== -1) {
+          todoList.splice(index, 1); // Removes the item from the list
+        }
+        callback(); // Calls the callback function
+      }, 1000);
+    }
+
+    // Let's start adding and removing tasks
+    function cb() {
+      // Add 'Eat 🍽️' to the list
+      console.log('Added Eat 🍽️');
+      addTodo('Sleep 🛌', () => {
+        // Then add 'Sleep 🛌'
+        console.log('Added Sleep 🛌');
+        removeTodo('Eat 🍽️', () => {
+          // Then remove 'Eat 🍽️'
+          console.log('Removed Eat 🍽️');
+          addTodo('Drink 🍻', () => {
+            // Then add 'Drink 🍻'
+            console.log('Added Drink 🍻');
+            // The nesting of callbacks continues, leading to callback hell
+            // This nested structure is what we call "Callback Hell"
+            // It makes the code hard to read and maintain
+            console.log(todoList);
+          });
+        });
+      });
+    }
+
+    setTimeout(() => {
+      addTodo('Eat 🍽️', cb);
+    }, 0);
+  </script>
+</html>
