@@ -9,17 +9,42 @@ const cart = [
 ];
 
 // basic eg:
-//* Consumer part
+//* Consumer part - consuming a promise
 const promise = createOrder(cart); // returns orderID
 // attaching the callback fn to promise object
-promise.then(function (orderID) {
-  proceedToPayment(orderID);
-});
-
-//* Producer part
-// creating promise
-function createOrder(cart) {
-  const pr = new Promise(function (resolve, reject) {
-    // (resolve, reject) are given by javascript
+promise
+  .then(function (orderID) {
+    // proceedToPayment(orderID);
+    // ✅ success aka resolved promise
+    console.log(orderID);
+  })
+  .catch(function (err) {
+    // ⛔️ failure aka reject promise / gracefully handling error(showing custom error)
+    console.log(err.message);
   });
+
+//* Producer part - creating promise
+function createOrder(cart) {
+  // (resolve, reject) are given by javascript - by default designed in Promise api
+  const pr = new Promise(function (resolve, reject) {
+    // some logic: createOrder, validateCart, return orderID
+    if (!validateCart(cart)) {
+      // If cart not valid, reject the promise
+      const err = new Error('Cart is not valid');
+      reject(err);
+    }
+    //logic for createOrder
+    const orderID = '12345'; // practically will get from a DB call
+    if (orderID) {
+      setTimeout(() => {
+        resolve(orderID);
+      }, 5000);
+    }
+  });
+
+  return pr;
+}
+
+function validateCart(cart) {
+  return false;
 }

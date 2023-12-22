@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chaining Promises</title>
+  </head>
+  <body>
+    Chaining Promises
+  </body>
+  <script>
+    // ****** Chaining a Promise ******
+    const cart = [
+      { orderID: 1, item: 'Apples', quantity: 3, price: 1.2 },
+      { orderID: 2, item: 'Bread', quantity: 2, price: 2.5 },
+      { orderID: 3, item: 'Milk', quantity: 1, price: 0.99 },
+      { orderID: 4, item: 'Eggs', quantity: 12, price: 3.99 },
+      { orderID: 5, item: 'Cheese', quantity: 1, price: 4.5 },
+    ];
+
+    function createOrder(cart) {
+      const pr = new Promise((resolve, reject) => {
+        if (!validateCart(cart)) {
+          const err = new Error('Cart is not valid');
+          reject(err);
+        } else {
+          const orderID = cart[0].orderID;
+          resolve(orderID);
+        }
+      });
+      return pr;
+    }
+
+    function validateCart(cart) {
+      return false;
+    }
+
+    function proceedToPayment(orderID) {
+      return new Promise((resolve, reject) => {
+        if (!orderID) {
+          const err = new Error('Payment Failed');
+          reject(err);
+        } else {
+          resolve('Payment Succesfull');
+        }
+      });
+    }
+
+    // Start the promise chain by creating an order with the cart
+    createOrder(cart)
+      // The createOrder function returns a Promise that resolves to an orderID
+      .then((orderID) => {
+        console.log(orderID);
+        // Return the orderID to the next then method in the chain
+        return orderID;
+        // This is necessary because the value you return here will be passed as an argument to the next then method
+      })
+      .catch((err) => {
+        // "attaching" a failure callback fn using a "catch" to the promise object
+        // can have multiple catch, this will catch errors for above chain and the next chain will continue
+        console.log(err.message);
+      })
+      // The orderID returned in the previous then method is received here
+      .then((orderID) => {
+        // Call the proceedToPayment function with the orderID
+        // This function returns a Promise that resolves to a paymentInfo string
+        return proceedToPayment(orderID);
+        // By returning this Promise, you're allowing the next then method in the chain to be called when 'this Promise' resolves
+      })
+      // The resolved value of the Promise returned by proceedToPayment (i.e., paymentInfo) is received here
+      .then((paymentInfo) => {
+        console.log(paymentInfo);
+      })
+      // If there is an error at any point in the chain, this catch method will be called
+      .catch((err) => {
+        console.log(err.message); // this catch will catch the errors for all the above chain
+      })
+      .then(() => {
+        console.log('this will work no matter what');
+      });
+  </script>
+</html>

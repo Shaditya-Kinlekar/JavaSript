@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    //  task: createOrder, validateCart, showOrderSummary, proceedToPayment, updateCart
+    const cart = [
+      { orderID: '001', item: 'Pant', quantity: 3, price: 500 },
+      { orderID: '002', item: 'Shirt', quantity: 2, price: 200 },
+      { orderID: '003', item: 'Shoes', quantity: 1, price: 800 },
+    ];
+
+    function createOrder(cart) {
+      return new Promise((resolve, reject) => {
+        if (!validateCart(cart)) {
+          const err = new Error('Cart is empty');
+          reject(err);
+        } else {
+          const orderIDs = cart.map((x) => x.orderID);
+          resolve(orderIDs);
+        }
+      });
+    }
+
+    function validateCart(cart) {
+      return cart.length > 0;
+    }
+
+    function showOrderSummary(orderIDs) {
+      let total = 0;
+      cart.forEach((item) => {
+        if (orderIDs.includes(item.orderID)) {
+          const eachItemPrice = item.quantity * item.price;
+          console.log(item.item + ' : ₹ ' + eachItemPrice);
+          total += eachItemPrice;
+        }
+      });
+      console.log(`Total Amount: ₹ ${total}`);
+      return total;
+    }
+
+    function proceedToPayment(total) {
+      return new Promise(function (resolve, reject) {
+        console.log('Processing Payment...');
+        if (total > 0) {
+          setTimeout(() => {
+            console.log('Payment Succesfull');
+            resolve();
+          }, 2000);
+        } else {
+          const err = new Error('Payment Failed');
+          reject(err);
+        }
+      });
+    }
+
+    function updateCart(total) {
+      if (total <= 0) {
+        console.log('Cart is now empty');
+      }
+    }
+
+    createOrder(cart)
+      .then((orderIDs) => {
+        return showOrderSummary(orderIDs);
+      })
+      .then((total) => {
+        return proceedToPayment(total);
+      })
+      .then(() => {
+        updateCart(0);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  </script>
+</html>
