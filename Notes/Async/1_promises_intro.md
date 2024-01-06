@@ -27,6 +27,7 @@ proceedtoPayment(orderDetails.orderID);
 Here both methods are depended on each other since we can only proceed to payment if the order is created.
 
 ## Handling this situation using Callback - earlier approach
+
 Before promises we used to depend on callback functions
 
 ```javascript
@@ -61,9 +62,9 @@ promise.then(function (orderDetails) {
 });
 ```
 
-So, as soon as JS engine executes promise line, and returns a promise object which is empty at the moment, but after certain time it will be filled with `orderDetails` which will be returned by `createOrder` API(`{data : orderDetails}`).
+So, as soon as JS engine executes `const promise = createOrder(cart)`, and returns a `promise object` which is `empty(undefined)` at the moment, but "after certain time" it will be filled with `orderDetails` (actual value) which will be returned by `createOrder` API(method) -> (`{data : orderDetails}`).
 
-And once we have data in the promise object, the callback function which we attached to promise object will be automatically called (`proceedtoPayment()`).
+And once we have data in the promise object, the callback function which we attached to promise object `promise.then(...)` will be automatically called i.e (`proceedtoPayment()`).
 
 ## ` But how is the use of promises better than the callback code since we still are using callbacks inside promises?`
 
