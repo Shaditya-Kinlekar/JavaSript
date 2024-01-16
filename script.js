@@ -35,9 +35,10 @@ const projects = [
     link: 'Projects/7 Todo/index.html',
   },
   {
-    title: 'Project 8 - Area of Shapes 🌐',
-    description: 'Calculate area of circles, triangles, rectangles, and trapezoids.',
-    link: 'Projects/8 Area-of-Shapes/index.html',
+    title: 'Project 8 - Shopping Cart 🛍️',
+    description:
+      'Create a shopping cart functionality. Users can add items to the cart, view them, and remove them.',
+    link: 'Projects/8 Shopping Cart/index.html',
   },
   {
     title: 'Project 9 - Color Changer 🎨',
@@ -68,6 +69,12 @@ const projects = [
     title: 'Project 14 - Unlimited Colors 🌈',
     description: 'Generate random colors and their hexadecimal codes.',
     link: 'Projects/14 unlimitedColors/index.html',
+  },
+  {
+    title: 'Project 15 - Local Storage 💾',
+    description:
+      'Manage student data using local storage. Users can add students, view them, and clear all data.',
+    link: 'Projects/15 localstorage/index.html',
   },
 ];
 

@@ -32,6 +32,7 @@ Before promises we used to depend on callback functions
 
 ```javascript
 createOrder(cart, function (orderDetails) {
+    // some logic that returns orderID
   proceedtoPayment(orderDetails.orderID);
 });
 ```
@@ -58,6 +59,7 @@ We will attach it to promise object as a callback function using ".then":
 
 ```javascript
 promise.then(function (orderDetails) {
+  // some logic that returns orderID
   proceedtoPayment(orderDetails.orderID);
 });
 ```
