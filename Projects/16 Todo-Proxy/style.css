@@ -1,0 +1,51 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img,
+svg,
+picture,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+:root {
+  --hue: 200;
+  --primary: hsl(var(--hue), 76%, 36%);
+  --primary-light: hsl(var(--hue), 76%, 56%);
+  --primary-super-light: hsl(var(--hue), 36%, 95%);
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  padding-top: 1rem;
+}
+
+.container {
+  max-width: 900px;
+  width: 90%;
+  margin: auto;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  color: var(--primary);
+  text-transform: uppercase;
+}
+
+.form {
+  border: 0.5px solid var(--primary);
+  display: flex;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-super-light);
+  height: 64px;
+  align-items: center;
+  border-radius: 0.5rem;
+}

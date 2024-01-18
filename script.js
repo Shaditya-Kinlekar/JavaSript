@@ -94,6 +94,7 @@ projects.forEach((project) => {
 
   const link = document.createElement('a');
   link.setAttribute('class', 'card-link');
+  link.setAttribute('target', '_blank');
   link.textContent = 'View Project';
   link.href = project.link;
 
