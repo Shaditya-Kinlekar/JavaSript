@@ -79,7 +79,7 @@ const projects = [
   {
     title: 'Project 16 - Todo List using Proxy 📝',
     description:
-      "A Todo List application leveraging JavaScript's Proxy object. Users can add, delete, and toggle the completion status of todos. The Proxy object is used to automatically save changes to the local storage whenever the todos list changes.",
+      "A Todo List application using JavaScript's Proxy object for automatic local storage updates.",
     link: 'Projects/16 Todo-Proxy/index.html',
   },
 ];
