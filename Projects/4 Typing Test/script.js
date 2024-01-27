@@ -105,7 +105,7 @@ const endTypingTest = () => {
   typing_ground.value = ''; // Clear the typed text
 };
 
-// Event listener for the button click 
+// Event listener for the button click
 btn.addEventListener('click', () => {
   switch (btn.innerText.toLowerCase()) {
     case 'start':
