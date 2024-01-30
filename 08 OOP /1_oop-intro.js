@@ -8,7 +8,7 @@ function User(username, loginCount, isLoggedIn) {
 
 // So, even without the "return this" statement, the constructor function will still update the properties of the newly created object correctly, and the object will be assigned to the variable userOne and userTwo as expected. The code will continue to work as intended.
 
-// Without the "new" keyword, "this" refers to the global object, not a new instance.
+//! Without the "new" keyword, "this" refers to the global object, not a new instance.
 const userOne = User('john', 5, true); // Assigns properties to the global object.
 // The second call overwrites the properties on the global object.
 const userTwo = User('jane', 10, false);
@@ -16,6 +16,7 @@ const userTwo = User('jane', 10, false);
 // because the same global object was modified twice.
 // console.log(userOne);
 
+//* creating instance
 const user1 = new User('john', 5, true);
 const user2 = new User('jane', 10, false);
 console.log(user1); // Now userOne is a separate instance of the User object
