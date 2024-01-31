@@ -36,3 +36,19 @@ for (const [index, item] of menu.entries()) {
   console.log(`${index + 1} : ${item}`);
 }
 console.log('--------------------');
+
+// code to return max number from an array
+let math = {
+  max(numbers) {
+    let max = -Infinity;
+
+    for (const num of numbers) {
+      num > max ? (max = num) : null;
+    }
+    return max;
+  },
+};
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+console.log(math.max(numbers));
+
