@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bind in JS</title>
+  </head>
+  <style>
+    button {
+      padding: 50px 100px;
+      margin: 20px;
+      font-size: 20px;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+  <body>
+    <button class="btn1">with bind</button>
+    <button class="btn2">with Arrow fn w/o bind</button>
+  </body>
+  <script>
+    class React {
+      constructor() {
+        this.library = 'React';
+        this.server = 'https://localhost:3000';
+
+        // case 1 with bind keyword
+        document.querySelector('.btn1').addEventListener('click', this.handleClick.bind(this));
+
+        // case 2 without bind keyword but using arrow fn
+        document.querySelector('.btn2').addEventListener('click', this.handleClick2);
+      }
+
+      // case 1
+      handleClick() {
+        console.log('with bind keyword');
+        console.log('button clicked!');
+        console.log(this.server);
+      }
+
+      // case 2
+      handleClick2 = () => {
+        console.log('with Arrow fn w/o bind');
+        console.log('button clicked!');
+        console.log(this.server);
+      };
+    }
+
+    const app = new React();
+    console.log(app);
+  </script>
+</html>
