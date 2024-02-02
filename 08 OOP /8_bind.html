@@ -50,5 +50,11 @@
 
     const app = new React();
     console.log(app);
+
+    /* 
+    Case 1: Using Bind In the first case, the handleClick method is called when the button with the class btn1 is clicked. The handleClick method is bound to the this keyword using the bind method. This ensures that when handleClick is called in response to the button click, the this keyword inside handleClick refers to the instance of the React class. if bind was not used then the "this" would refer to the button and the server would not be accessible.
+
+    Case 2: Using Arrow Function In the second case, the handleClick2 method is called when the button with the class btn2 is clicked. The handleClick2 method is defined using an arrow function. Arrow functions inherit the this value from the enclosing lexical context, so there's no need to use bind to maintain the correct this context.
+    */
   </script>
 </html>
