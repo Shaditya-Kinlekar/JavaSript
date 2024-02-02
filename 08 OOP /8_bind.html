@@ -21,26 +21,37 @@
     <button class="btn2">with Arrow fn w/o bind</button>
   </body>
   <script>
+    // In the earlier versions of React, before the widespread adoption of ES6 arrow functions, handling the this context within event handlers typically required developers to explicitly bind their methods to the correct context, i.e., the component instance. This was necessary because in JavaScript, the value of this inside a function depends on how the function is called, not where it's defined.
+
     class React {
       constructor() {
         this.library = 'React';
         this.server = 'https://localhost:3000';
 
-        // case 1 with bind keyword
+        // Case 1: Using Bind
+        // Bind the handleClick method to the current instance of the React class.
+        // This ensures that when handleClick is called in response to the button click,
+        // the this keyword inside handleClick refers to the instance of the React class.
+        // if bind was not used then the "this" would refer to the button and the server would not be accessible.
         document.querySelector('.btn1').addEventListener('click', this.handleClick.bind(this));
 
-        // case 2 without bind keyword but using arrow fn
+        // Case 2: Using Arrow Function
+        // Define handleClick2 as an arrow function property of the React class.
+        // Arrow functions inherit the this value from the enclosing lexical context,
+        // so there's no need to use bind to maintain the correct this context.
+        // When the button with the class btn2 is clicked, handleClick2 is executed,
+        // and this inside it refers to the instance of the React class.
         document.querySelector('.btn2').addEventListener('click', this.handleClick2);
       }
 
-      // case 1
+      // Case 1: handleClick method
       handleClick() {
         console.log('with bind keyword');
         console.log('button clicked!');
         console.log(this.server);
       }
 
-      // case 2
+      // Case 2: handleClick2 arrow function
       handleClick2 = () => {
         console.log('with Arrow fn w/o bind');
         console.log('button clicked!');
@@ -50,11 +61,5 @@
 
     const app = new React();
     console.log(app);
-
-    /* 
-    Case 1: Using Bind In the first case, the handleClick method is called when the button with the class btn1 is clicked. The handleClick method is bound to the this keyword using the bind method. This ensures that when handleClick is called in response to the button click, the this keyword inside handleClick refers to the instance of the React class. if bind was not used then the "this" would refer to the button and the server would not be accessible.
-
-    Case 2: Using Arrow Function In the second case, the handleClick2 method is called when the button with the class btn2 is clicked. The handleClick2 method is defined using an arrow function. Arrow functions inherit the this value from the enclosing lexical context, so there's no need to use bind to maintain the correct this context.
-    */
   </script>
 </html>
