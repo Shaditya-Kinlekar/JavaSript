@@ -82,3 +82,12 @@ body {
 .result {
   color: #fff;
 }
+
+@media screen and (max-width: 768px) {
+  .two {
+    flex-direction: column;
+  }
+  #swap {
+    background-color: #fff;
+  }
+}
