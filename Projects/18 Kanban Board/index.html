@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kanban Board - Drag & Drop</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="drag.js" defer></script>
+    <script src="todo.js" defer></script>
+  </head>
+  <body>
+    <div class="board">
+      <form id="todo-form">
+        <input type="text" placeholder="New Todo ..." id="todo-input" />
+        <button type="submit">Add +</button>
+      </form>
+
+      <div class="lanes">
+        <div class="swim-lane" id="todo-lane">
+          <h3 class="heading">TODO</h3>
+        </div>
+
+        <div class="swim-lane" id="todo-lane">
+          <h3 class="heading">Doing</h3>
+        </div>
+
+        <div class="swim-lane" id="todo-lane">
+          <h3 class="heading">Done</h3>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

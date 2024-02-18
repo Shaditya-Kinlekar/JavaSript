@@ -93,6 +93,11 @@ const projects = [
     description: 'Convert between any two currencies using the current exchange rates.',
     link: 'Projects/17 Currency Converter/index.html',
   },
+  {
+    title: 'Project  18 - Kanban Board 📋',
+    description: 'A Kanban board with drag & drop functionality for managing tasks.',
+    link: 'Projects/18 Kanban Board/index.html',
+  },
 ];
 
 const container = document.getElementById('projects-container');
