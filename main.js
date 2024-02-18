@@ -82,6 +82,17 @@ const projects = [
       "A Todo List application using JavaScript's Proxy object for automatic local storage updates.",
     link: 'Projects/16 Todo-Proxy/index.html',
   },
+  {
+    title: 'Project 16 - Todo List using Proxy 📝',
+    description:
+      "A Todo List application using JavaScript's Proxy object for automatic local storage updates.",
+    link: 'Projects/17 Currency Converter/index.html',
+  },
+  {
+    title: 'Project 17 - Currency Converter 💰',
+    description: 'Convert between any two currencies using the current exchange rates.',
+    link: 'Projects/17 Currency Converter/index.html',
+  },
 ];
 
 const container = document.getElementById('projects-container');
