@@ -43,7 +43,7 @@ h1 {
 }
 
 button {
-  background-color: #ffd84d;
+  background-color: #4dffd5;
   color: rgb(60, 60, 60);
   padding: 0.6rem 1rem;
   border: none;
@@ -56,7 +56,7 @@ button {
 }
 
 button:hover {
-  background-color: #fbcc24;
+  background-color: #41d2b0;
   transform: translateY(2px);
 }
 
